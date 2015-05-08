@@ -1,0 +1,1 @@
+var Controller={init:function(){console.log("--Initializing Model And Data"),Model.initData(function(o){console.log("--About to draw"),MultiViz.draw(o)}),console.log("--Initialized Model")}};

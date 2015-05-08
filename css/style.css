@@ -1,0 +1,57 @@
+/*body {
+  color: white;
+  font-family: Lato;
+  background-color: #1D1E1A;
+}
+
+WELCOME 
+#welcome-header {
+  text-align: center;
+  padding-bottom: 20px;
+}*/
+
+/*.dc-chart .grid-line line {
+  stroke: #CCCCCC;
+}
+
+.dc-chart {
+  stroke: white;
+
+}
+.dc-chart .axis path, .axis line {
+  stroke: #CCCCCC;
+}
+
+.dc-chart .tick text {
+  stroke: #CCCCCC;
+  font-weight:100;
+}
+.dc-chart .axis text {
+  stroke: #CCCCCC;
+ font-weight:100;
+}
+
+.dc-chart .g .state path:hover{
+  fill: white;
+}
+
+.dc-chart g.state :hover {
+  fill-opacity: .5;
+}*/
+
+
+
+.dc-chart g.row text {
+  stroke:black;
+}
+
+#companies-chart {
+  padding-right: 100px;
+  margin-left: -60px;
+
+}
+
+.hello {
+margin-right: -20px;
+padding-right: 100px;
+  }

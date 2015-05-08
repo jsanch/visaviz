@@ -1,0 +1,150 @@
+%html
+  %head
+    %meta{:charset => "utf-8"}
+    %link{:href => "http://fonts.googleapis.com/css?family=Lato", :rel => "stylesheet", :type => "text/css"}
+
+    /////////////////////////////////// CSS ///////////////////////////////////
+
+    / Bootstrap CSS
+    %link{:href => "libs/bootstrap/css/bootstrap.min.css", :rel => "stylesheet"}
+
+
+    / C3 CSS 
+    %link{:href => "libs/c3/c3.css", :rel => "stylesheet", :type => "text/css"}/
+
+    / DC CSS
+    %link{:href => "libs/dc/dc.css", :rel => "stylesheet", :type => "text/css"}/
+
+    / My Style  
+    / %link{:href => "css/style.css", :rel => "stylesheet", :type => "text/css"}
+
+    / My Style  
+    %link{:href => "css/style.css", :rel => "stylesheet", :type => "text/css"}
+
+  %body
+
+
+
+  .container
+    .row
+      %h2 H-1 B Visa Application Landscape for 2011-2015
+      %p
+        I have a really important topic that I have been wanting to analyze for quite a while: The U.S. Immigration of Foreign Skilled Workers. More specifically the process of applying to H-1 B visas in the US. Currently applicants must apply to get into a lottery. The process is very shady, it's really hard for applicants to get a sense of what to expect.  Luckily with Obama's OpenGov initiative, the data for this process is very accessible and open. The data (https://app.enigma.io/search/source/us.gov.dol.oflc.h1b) , spans 2006 to 2015 and has interesting stuff like approval status, salary, job title and more. This also is a process that me and a lot of my peers are being exposed too which brings a close perspective to the visualization that I will be making. 
+    .row
+      .col-md-10
+        #us-chart
+          %strong H-1 B Visa Application Distribution by States (color: total applications submitted)
+          %a.reset{:href => "javascript:MultiViz.usChart.filterAll();dc.redrawAll();", :style => "display: none;"} reset
+          %span.reset{:style => "display: none;"}
+            | Current filter:
+            %span.filter
+          .clearfix
+        .clearfix
+      .col-md-2
+        .row
+          #certified-chart
+            %strong Acceptance Distribution
+            %a.reset{:href => "javascript:MultiViz.certifiedChart.filterAll();dc.redrawAll();", :style => "display: none;"} reset
+            .clearfix
+          .clearfix
+        .row
+          #job-title-chart
+            %strong Year Distribution
+            %a.reset{:href => "javascript:MultiViz.jobTitleChart.filterAll();dc.redrawAll();", :style => "display: none;"} reset
+            .clearfix
+          .clearfix
+
+    .row
+      .col-md-8
+        #industry-chart
+          %strong By Industries
+    
+          %a.reset{:href => "javascript:MultiViz.industryChart.filterAll();dc.redrawAll();", :style => "display: none;"} reset
+          .clearfix
+        .clearfix
+      .col-md-4
+        .hello
+          #companies-chart
+            %strong Salary Distribution
+            %a.reset{:href => "javascript:MultiViz.companiesChart.filterAll();dc.redrawAll();", :style => "display: none;"} reset
+            .clearfix
+          .clearfix
+    .row
+      #round-chart
+        %strong By Job Title
+        (y: number of deals, x: total amount raised in millions, radius: amount raised)
+        %a.reset{:href => "javascript:MultiViz.roundChart.filterAll();dc.redrawAll();", :style => "display: none;"} reset
+        .clearfix
+      .clearfix
+      %div
+        %a{:href => "javascript:dc.filterAll(); dc.renderAll();"} Reset All
+
+    #data-count
+      %span.filter-count
+      selected out of
+      %span.total-count
+      records
+      
+
+
+
+    / .container
+    /   %h2 US Venture Capital Landscape 2011
+    /   %p
+    /     This is a
+    /     %a{:href => "../index.html"} dc.js
+    /     example showing how GeoJson Polygon can be associated with
+    /     crossfilter
+    /     dimension and group using a choropleth chart. Different regions can be colored differently based on different
+    /     calculation (amount raised). Like any other dc.js chart a choropleth chart can then be mixed with other dc.js
+    /     chart
+    /     or your own custom d3 drawing. In this example we have shown how it can work with multiple bubble chart.
+    /   %p
+    /     Public data source
+    /     = succeed "." do
+    /       %a{:href => "http://buzzdata.com/azad2002/the-united-states-of-venture-capital-2011#!/data", :target => "_blank"} BuzzData.com
+    /   #us-chart
+    /     %strong VC Distribution by States (color: total amount raised)
+    /     %a.reset{:href => "javascript:MultiViz.usChart.filterAll();dc.redrawAll();", :style => "display: none;"} reset
+    /     %span.reset{:style => "display: none;"}
+    /       | Current filter:
+    /       %span.filter
+    /     .clearfix
+    /   .clearfix
+    /   #industry-chart
+    /     %strong By Industries
+    /     (y: number of deals, x: total amount raised in millions, radius: amount raised)
+    /     %a.reset{:href => "javascript:MultiViz.industryChart.filterAll();dc.redrawAll();", :style => "display: none;"} reset
+    /     .clearfix
+    /   .clearfix
+    /   #round-chart
+    /     %strong By Rounds
+    /     (y: number of deals, x: total amount raised in millions, radius: amount raised)
+    /     %a.reset{:href => "javascript:MultiViz.roundChart.filterAll();dc.redrawAll();", :style => "display: none;"} reset
+    /     .clearfix
+    /   .clearfix
+    /   %div
+    /     %a{:href => "javascript:dc.filterAll(); dc.renderAll();"} Reset All
+
+    /////////////////////////////////// JS ///////////////////////////////////
+    / Jquery 
+    %script{:src => "libs/jquery-2.1.3.min.js"}
+
+    / Bootstrap JS
+    %script{:src => "libs/bootstrap/js/bootstrap.min.js"}
+ 
+    / Load D3 and C3 and crossfilter and DC
+
+    %script{:charset => "utf-8", :src => "libs/d3/d3.js"}
+    %script{:src => "/libs/c3/c3.js"}    
+    %script{:src => "/libs/crossfilter/crossfilter.js"}
+    %script{:src => "/libs/dc/dc.js"}
+
+    / My Code. Must include after document loads.
+    %script{:src => "js/MultiViz.js"}        
+    / %script{:src => "js/CertifiedViz.js"}    
+    %script{:src => "js/Model.js"}
+    %script{:src => "js/Controller.js"}
+    %script{:src => "js/viz.js"}
+
+
