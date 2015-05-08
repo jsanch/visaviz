@@ -1,0 +1,1 @@
+var Controller={init:function(){Model.initData(function(i){CertifiedViz.draw(i)})}};
